@@ -2,40 +2,85 @@ public class EmployeeDatabase {
 
     private Employee[] database;
 
-    public EmployeeDatabase(){
+    public EmployeeDatabase() {
         database = new Employee[11];
     }
 
-    public EmployeeDatabase(Employee[] x){
+    public EmployeeDatabase(Employee[] x) {
         database = x;
     }
 
-    public boolean add(int key){
+    public boolean add(Employee sample) {
 
         boolean doesNotContain = true;
 
-        for(Employee x: database){
+        for (Employee x : database) {
 
-            if(x.ID == key){
+            if (x.ID == sample.ID) {
                 doesNotContain = false;
             }
         }
 
-        while(true){
+        while (true) {
 
-            int index = key %database.length;
+            int index = sample.ID % database.length;
 
-            if(database[index].ID == -1){
+            if (database[index].ID == -1) {
 
-                database[index].ID = 
+                database[index].ID = sample.ID;
+                break;
+            } else {
+
+                if (index != database.length - 1) {
+                    index++;
+                } else {
+                    doesNotContain = false;
+                    break;
+                }
+
             }
+        }
+        return doesNotContain;
 
+    }
 
+    public boolean contains(Employee sample){
+
+        boolean contains = false;
+
+        for (Employee x : database) {
+
+            if (x.ID == sample.ID) {
+                contains = true;
+            }
         }
 
-
-
+        return contains;
 
     }
     
+    public boolean remove(){
+
+        
+    }
+
+    public int size(){
+
+        int count = 0;
+
+        for(Employee x: database){
+
+            if(x.ID!= -1){
+
+                count++;
+            }
+
+        }
+
+        return count;
+    
+    }
+
+
+
 }
