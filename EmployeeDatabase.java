@@ -59,9 +59,21 @@ public class EmployeeDatabase {
 
     }
     
-    public boolean remove(){
+    public boolean remove(Employee sample){
 
-        
+        boolean removed = false;
+
+        for (Employee x : database) {
+
+            if (x.ID == sample.ID) {
+                removed = true;
+                x = new Employee("", -1);
+            }
+        }
+
+
+        return removed;
+
     }
 
     public int size(){
